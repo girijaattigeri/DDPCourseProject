@@ -1,0 +1,56 @@
+---
+title: "Shiny Simple Tutorial"
+author: "Girija Attigeri"
+date: "July 22, 2018"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+- Simple Example of Creation of Shiny App. 
+- The application is designed to add or multiply two numbers. 
+
+## Feartures 
+
+  - Add numbers in the textboxes provided. minimum number to be entered is zero, maximum is 100
+  - Select the proper radio button either add or multiply
+```{r eval=FALSE,echo=TRUE}
+library(shiny)
+shinyUI(fluidPage(
+  titlePanel("Add or multiply numbers"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("numeric1", "First Number ", 
+                   value = 1000, min = 1, max = 1000, step = 1),
+      numericInput("numeric2", "Second Number", 
+                   value = 1000, min = 1, max = 1000, step = 1),
+      radioButtons("radio", label = h3("Radio buttons"),
+                   choices = list("Add" = 1, "Multiply" = 2),
+                   selected = 1)
+    ),
+    mainPanel( h3("Output"),textOutput("sum")
+    )  ) ))
+```
+
+## Slide with R Output
+
+```{r ,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("D://RStudio//ddp.png")
+ grid.raster(img)
+```
+!["Figure"] D:\\RStudio\\ddp.png
+```
+
+## Conclusion
+-Based on th radio button input two numbers were added or multiplied
+
+Thank you
+
